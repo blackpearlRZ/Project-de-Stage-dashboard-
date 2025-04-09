@@ -5,10 +5,10 @@ import ShowResults from '../Calculs/showResults'
 import Navigation from '../navigation/navigation'
 import Footer from '../Footer/Footer'
 import './layout.css'
-export default function Layout({userData, handlelogout ,userInfo}) {
+export default function Layout({handlelogout}) {
   return (
     <div>
-        <Header userData={userData} userInfo={userInfo} handleLogout={handlelogout}/>
+        <Header handleLogout={handlelogout}/>
         <hr/>
         <ShowResults/>
         <Navigation/>

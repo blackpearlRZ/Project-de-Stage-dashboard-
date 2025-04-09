@@ -7,11 +7,13 @@ import MesStatistique from '../../assets/MesStatistiques.png';
 import mesEnvois from '../../assets/mesEnvois.png';
 import Archive from '../../assets/Archiver.png';
 import modification from '../../assets/mesDemandesDeModification.png';
+import { useSelector } from 'react-redux';
 
-export default function Header({ userData ,handleLogout,userInfo}) {
+export default function Header({handleLogout}) {
+  const userData = useSelector(state => state.userData)
+  const userInfo = useSelector(state => state.authInfo)
   const [open, setOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
-  
   // Extract first letter of username
   const userInitial = userData?.family_name?.charAt(0)?.toUpperCase() || 'U';
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import keycloak from './Keycloak';
 import './App.css'
 import axios from "axios"
+import { useDispatch, useSelector } from "react-redux"; 
 import Layout from './components/Layout/layout';
 
 const api = axios.create({
@@ -11,7 +12,7 @@ const api = axios.create({
 const Login = () => {
   const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
-  const [userData, setuserData] = useState(null);
+  const dispatch = useDispatch()
 
   function handlelogout(){
     try {
@@ -28,15 +29,22 @@ const Login = () => {
     try{
       api.interceptors.request.use(config =>{
         config.headers.Authorization = `Bearer ${keycloak.token}`
-        console.log(config)
         return config
       })
       const response = await api.post("/command", {
         dateTag : '1970-01-01 00:00:00',
         ip : '192.168.8.119'
       })
-      console.log('response :',response.data)
-      setuserData(response.data)
+      const flattenedArray = [];
+      for (const key in response) {
+        if (Array.isArray(response[key])) {
+          flattenedArray.push(...response[key]);
+        }
+} 
+      dispatch({
+        type : "SET_USER_DATA",
+        payload : flattenedArray
+      })
     }catch(err){
       console.error('API request failed :',err)
     }
@@ -44,7 +52,7 @@ const Login = () => {
 
   useEffect(() => {
     let initialized = false;
-
+    
     const initKeycloak = async () => {
       if (initialized || keycloak.authenticated) return;
       initialized = true;
@@ -55,7 +63,7 @@ const Login = () => {
           checkLoginIframe: false
         });
         if (authenticated) {
-          console.log('✅ Authenticated:', keycloak.tokenParsed);
+          //console.log('✅ Authenticated:', keycloak.tokenParsed);
           sessionStorage.setItem('keycloakInitialized', 'true');
           await fetchUserData()
         } else {
@@ -66,6 +74,10 @@ const Login = () => {
       } finally {
         setLoading(false);
       }
+      dispatch({
+        type : 'SET_AUTH_INFO' ,
+        payload : keycloak.tokenParsed
+      })
     };
 
     if (!sessionStorage.getItem('keycloakInitialized')) {
@@ -85,7 +97,7 @@ const Login = () => {
   
   return loading ? <p>Redirecting to login...</p> :
    <>
-   <Layout userData={userData} userInfo = {keycloak.tokenParsed} handlelogout={handlelogout}/>
+   <Layout handlelogout={handlelogout}/>
   </>;
 };
 
