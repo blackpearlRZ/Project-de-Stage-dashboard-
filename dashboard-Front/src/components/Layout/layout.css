@@ -1,0 +1,8 @@
+.statistiques_container, .Envoi_container, .EnvoiArchive_container{
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    border: 2px solid #dbdbdb;
+    padding: 1.6rem 1.3rem ;
+}

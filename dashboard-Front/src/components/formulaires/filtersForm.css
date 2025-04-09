@@ -1,0 +1,132 @@
+:root{
+    --width-of-input: 180px;
+    --height-of-input: 2.8rem;
+    --border-radius: 10px;
+    --input-bg: transparent;
+}
+.filter_form {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 8px;
+}
+.filter_form label{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.filter_form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: bold;
+    align-items: center;
+    margin: 0.2rem 0;
+}
+
+.form {
+    position: relative;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
+    display: flex;
+    align-items: center;
+    padding-inline: 0.8em;
+    border-radius: var(--border-radius);
+    background: var(--input-bg);
+    border: 2px solid transparent;
+    transition: all 0.5s;
+    background-color: transparent;
+    border: 2px solid grey;
+}
+
+.input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+    outline: none;
+}
+
+.filter_form button {
+    border: none;
+    background-color: transparent;
+    border-radius: var(--border-radius);
+    padding: 0.2em 0.3em;
+    cursor: pointer;
+}
+
+/* Remove hover/focus effects from input inside .form and buttons */
+.input:hover, .input:focus{
+    border: none;
+    box-shadow: none;
+}
+
+.reset {
+    border: none;
+    background: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.filter_input:not(:placeholder-shown) ~ .reset {
+    opacity: 1;
+    visibility: visible;
+}
+
+.form svg {
+    width: 17px;
+    margin-top: 3px;
+}
+
+
+form  .filter_input {
+    border: 2px solid transparent;
+    width: 15em;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
+    padding-left: 0.8em;
+    outline: none;
+    overflow: hidden;
+    background-color: transparent;
+    border: 2px solid grey;
+    border-radius: 10px;
+    transition: all 0.5s;
+    font-weight: bold;
+  }
+  
+  
+  .filter_form input :focus-within , .filter_form select:focus-within, .form:focus-within{
+    border: 2px solid #4A9DEC;
+    box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+  }
+  
+  /* From Uiverse.io by SelfMadeSystem */ 
+.btn {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 1rem ;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(#1f5afe, #0f4cf5);
+    color: white;
+    box-shadow: inset 0pt 4pt 3pt -2pt #386fff, 0pt 4pt 5pt -3pt #0009;
+    border-bottom: 2pt solid #083acd;
+  }
+  
+  @media screen and (max-width: 930px) {
+    .filter_form{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin: 2rem 0;
+        justify-content: center;
+    }
+}
+  

@@ -1,7 +1,10 @@
-import React from 'react'
+import FiltersForm from "../formulaires/filtersForm"
 
 export default function EnvoiArchive() {
   return (
-    <div>EnvoiArchive</div>
+    <div className="EnvoiArchive_container">
+      <h3>Mes envois archives</h3>
+      <FiltersForm/>
+    </div>
   )
 }

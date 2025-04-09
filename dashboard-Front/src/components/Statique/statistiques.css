@@ -1,0 +1,38 @@
+.charts_container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.charts_items {
+  border: 3px solid black;
+  display: flex;
+  height: 15rem;
+  justify-content: center;
+}
+
+.charts_items:nth-child(1),
+.charts_items:nth-child(2),
+.charts_items:nth-child(3) {
+  width: 30%;
+}
+
+.charts_items:nth-child(4),
+.charts_items:nth-child(5) {
+  width: 46%;
+}
+
+@media screen and (max-width: 830px) {
+  .charts_container {
+      display: flex !important;
+      flex-direction: column !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+  }
+  .charts_items {
+      width: 100% !important;
+  }
+}
