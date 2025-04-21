@@ -5,7 +5,7 @@
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
 }
 body {
-    margin: 1.5rem;
+    margin: 1rem;
 }
 
 @media screen and (max-width: 830px) {

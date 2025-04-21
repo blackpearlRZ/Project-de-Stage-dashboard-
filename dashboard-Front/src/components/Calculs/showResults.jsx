@@ -3,25 +3,55 @@ import colis from '../../assets/colis.png'
 import envoi from '../../assets/envois.png'
 import envoiArchive from '../../assets/total.png'
 import './showResults.css'
+import api from '../axios'
+import { useState , useEffect} from 'react'
+
 export default function ShowResults() {
-    const Coliss = useSelector(state => state.userData)
-    const totalAmount = Coliss.reduce((sum, item) => {
+    // const Coliss = useSelector(state => state.userData)
+    // const totalAmount = Coliss.reduce((sum, item) => {
+    //     return sum + (item.amountCrbt || 0);
+    // }, 0);
+    const [ColisInfo,setColisInfo] = useState([])
+    const fetchUserData = async() =>{
+        try{
+          const response = await api.post("/command", {
+            dateTag : '1970-01-01 00:00:00',
+            ip : '192.168.8.119'
+          })
+          //console.log("reponse :",response)
+          const flattenedArray = [];
+          for (const key in response) {
+            if (Array.isArray(response[key])) {
+              flattenedArray.push(...response[key]);
+            }
+          }
+          console.log("Colis Info",flattenedArray[10])
+          setColisInfo(flattenedArray)
+        
+        }catch(err){
+          console.error('API request failed :',err)
+        }
+      }
+    
+      useEffect(()=> {
+        fetchUserData()
+      },[])
+      const totalAmount = ColisInfo.reduce((sum, item) => {
         return sum + (item.amountCrbt || 0);
     }, 0);
-    console.log(Coliss)
   return (
     <div className='container'>
         <div className="items">
             <div>
                 <h4>Nb. Colis affiche</h4>
-                <h3>{Coliss.length}</h3>
+                <h3>{ColisInfo.length}</h3>
             </div>
             <img src={colis} alt="" />
         </div>
         <div className="items">
         <div>
                 <h4>Total envois de la periode</h4>
-                <h3>{Coliss.length}</h3>
+                <h3>{ColisInfo.length}</h3>
             </div>
             <img src={envoi} alt="" />
         </div>

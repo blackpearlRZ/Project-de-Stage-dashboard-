@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
-import keycloak from './Keycloak';
+ import keycloak from './Keycloak';
 import './App.css'
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"; 
 import Layout from './components/Layout/layout';
 
-const api = axios.create({
-  baseURL: 'https://dashecom.barid.ma/backend/api',
-});
 
 const Login = () => {
   const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch()
+  const token = useSelector(state =>state.token)
 
   function handlelogout(){
     try {
@@ -22,31 +20,6 @@ const Login = () => {
       setLoading(true)
     } catch (error) {
       console.error('Logout failed:', error);
-    }
-  }
-
-  const fetchUserData = async() =>{
-    try{
-      api.interceptors.request.use(config =>{
-        config.headers.Authorization = `Bearer ${keycloak.token}`
-        return config
-      })
-      const response = await api.post("/command", {
-        dateTag : '1970-01-01 00:00:00',
-        ip : '192.168.8.119'
-      })
-      const flattenedArray = [];
-      for (const key in response) {
-        if (Array.isArray(response[key])) {
-          flattenedArray.push(...response[key]);
-        }
-} 
-      dispatch({
-        type : "SET_USER_DATA",
-        payload : flattenedArray
-      })
-    }catch(err){
-      console.error('API request failed :',err)
     }
   }
 
@@ -65,7 +38,7 @@ const Login = () => {
         if (authenticated) {
           //console.log('✅ Authenticated:', keycloak.tokenParsed);
           sessionStorage.setItem('keycloakInitialized', 'true');
-          await fetchUserData()
+          localStorage.setItem('token', keycloak.token)
         } else {
           console.log('❌ Not authenticated');
         }
