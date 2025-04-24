@@ -156,7 +156,7 @@ export default function Envoi() {
               <td>{colis.destNom}</td>
               <td>{colis.telDest}</td>
               <td>{colis.destAdress1}</td>
-              <td>{formatDate(colis.datePaiement)}</td>
+              <td>{formatDate(colis.datePaiement) !== "01/01/1970 00:00" ?formatDate(colis.datePaiement) :''}</td>
               <td>{colis.telLivreur}</td>
               <td>{colis.datePaiement == null ? <><input type="checkbox" checked={false}/></> :<><input type="checkbox" checked={true}/></>}</td>
               <td>{colis.poidsReel}Kg</td>

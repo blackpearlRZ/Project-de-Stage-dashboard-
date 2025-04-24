@@ -25,7 +25,6 @@ export default function ShowResults() {
               flattenedArray.push(...response[key]);
             }
           }
-          console.log("Colis Info",flattenedArray[10])
           setColisInfo(flattenedArray)
         
         }catch(err){

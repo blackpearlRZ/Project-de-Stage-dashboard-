@@ -27,7 +27,7 @@ export default function filterData(ColisData, filters) {
 
     // Filter by destination (exact match, ignore if 'all')
     if (filters.distination !== 'all' && colis.libville?.toUpperCase() !== filters.distination.toUpperCase()) {
-      return [];
+      return false;
     }
 
     // Filter by date status range
