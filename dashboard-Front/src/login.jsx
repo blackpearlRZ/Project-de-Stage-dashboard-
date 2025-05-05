@@ -10,7 +10,6 @@ const Login = () => {
   const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch()
-  const token = useSelector(state =>state.token)
 
   function handlelogout(){
     try {

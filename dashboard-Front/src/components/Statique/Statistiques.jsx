@@ -98,6 +98,7 @@ export default function Statistiques() {
       { displayName: 'Novembre 2024', month: 10, year: 2024 },
       { displayName: 'Decenbre 2024', month: 11, year: 2024 },
       { displayName: 'Janvier 2025', month: 0, year: 2025 },
+      { displayName: 'Fevrier 2025', month: 1, year: 2025 },
       { displayName: 'Mars 2025', month: 2, year: 2025 },
     ]
 
@@ -254,33 +255,69 @@ export default function Statistiques() {
           {ColisInfo.length === 0 ?
           <><h4>No data to display</h4></> : <>
           <ResponsiveContainer width="100%" height={450}>
-            <LineChart width={500} height={500} data={chartdata} margin={{
-                top: 5,
-                right: 20,
-                left: 10,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="6 8" />
-              <XAxis 
-                dataKey="name" 
-                angle={-45} 
-                textAnchor="end" 
-                height={70}
-                tick={{ fontSize: 12 }}
-              />
-              <YAxis 
-                tickCount={10} // Show more values
-                width={80}
-                tick={false}
-                axisLine={{ stroke: '#000' }}  
-                tickLine={{ stroke: '#000' }}  
-              />
-              <Tooltip />
-                <Line type="monotone" dataKey="totalCRBT" strokeOpacity={opacity.totalCRBT} stroke="#0d9937" activeDot={{ r: 10 }} name="Total CRBT"/>
-                <Line type="monotone" dataKey="totalEnvois" strokeOpacity={opacity.totalEnvois} stroke="#ef3838" name="total Envois" />
-              <Legend onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
-            </LineChart>
+          <LineChart 
+          width={500} 
+          height={500} 
+          data={chartdata} 
+          margin={{
+            top: 5,
+            right: -40,
+            left: -13,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis 
+            dataKey="name" 
+            angle={-45} 
+            textAnchor="end" 
+            height={70}
+            tick={{ fontSize: 12 }}
+            tickFormatter={(value, index) => {
+              const dataPoint = chartdata[index];
+              return (dataPoint.totalCRBT > 0 || dataPoint.totalEnvois > 0) ? value : '';
+            }}
+            interval={0} 
+          />
+          <YAxis 
+            yAxisId="left"
+            orientation="left"
+            tickCount={12}
+            width={80}
+            tick = {{ fill: 'transparent' }}
+            axisLine={{ stroke: '#0d9937' }}  
+            tickLine={{ stroke: '#0d9937' }}
+            />
+          <YAxis 
+            yAxisId="right"
+            orientation="right"
+            tickCount={12}
+            tick = {false}
+            width={80}
+            axisLine={false}  
+            tickLine={false}
+          />
+          
+          <Tooltip />
+          <Line 
+            yAxisId="left"
+            type="monotone" 
+            dataKey="totalCRBT" 
+            strokeOpacity={opacity.totalCRBT} 
+            stroke="#0d9937" 
+            activeDot={{ r: 10 }} 
+            name="Total CRBT"
+          />
+          <Line 
+            yAxisId="right"
+            type="monotone" 
+            dataKey="totalEnvois" 
+            strokeOpacity={opacity.totalEnvois} 
+            stroke="#ef3838" 
+            name="total Envois" 
+          />
+          <Legend onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
+        </LineChart>
           </ResponsiveContainer>
           </>}
         </div>
