@@ -7,31 +7,31 @@ The main objective of the Dashboard Amana developed for Poste Maroc Hassan Rabat
 
 #### Key objectives include:
 
-1.Facilitate real-time package tracking
+##### Facilitate real-time package tracking
 
 Display shipment status (pending, in transit, delivered, etc.), payment status, and package details (recipient, tracking code, weight, CRBT, etc.).
 
 Enable intuitive visualization through interactive charts and tables.
 
-2.Improve logistics management and decision-making
+##### Improve logistics management and decision-making
 
 Provide monthly statistics (total shipments, total CRBT) to analyze performance.
 
 Filter data (by customer, date, status, etc.) for targeted tracking.
 
-2.Reduce manual tasks and errors
+##### Reduce manual tasks and errors
 
 Automate reports and package tracking to avoid repetitive data entry.
 
 Ensure compliance with Poste Maroc's internal processes.
 
-3.Enhance customer and internal experience
+##### Enhance customer and internal experience
 
 Offer customers full transparency on their shipment status.
 
 Allow managers to quickly identify delays or anomalies.
 
-4.Ensure data traceability and archiving
+##### Ensure data traceability and archiving
 
 Maintain a history of all operations for auditing or future tracking.
 
