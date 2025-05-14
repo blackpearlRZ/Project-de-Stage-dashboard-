@@ -14,12 +14,12 @@ export default function Statistiques() {
   const fetchUserData = async() =>{
     try {
       const query = {
-        dateTag: '1970-01-01 00:00:00',
-        ip: '192.168.8.119',
+        dateTag: 'DAT_TAG',
+        ip: 'IP_ADDRESS',
         
       };
   
-      const response = await api.post("/command", query);
+      const response = await api.post("/API_PART", query);
       const filterDataArray = filterData(response.data, filters)
       console.log(filterDataArray)
       if(ColisInfo.length == 0){

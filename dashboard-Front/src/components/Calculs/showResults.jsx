@@ -14,9 +14,9 @@ export default function ShowResults() {
     const [ColisInfo,setColisInfo] = useState([])
     const fetchUserData = async() =>{
         try{
-          const response = await api.post("/command", {
-            dateTag : '1970-01-01 00:00:00',
-            ip : '192.168.8.119'
+          const response = await api.post("/API_PART", {
+            dateTag : 'DATE_TAG',
+            ip : 'IP_ADDRESS'
           })
           //console.log("reponse :",response)
           const flattenedArray = [];
