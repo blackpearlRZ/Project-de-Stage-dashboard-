@@ -32,6 +32,5 @@ Allow managers to quickly identify delays or anomalies.
 Maintain a history of all operations for auditing or future tracking.<br />
 
 ### Stakeholders
-a) The Client
-
-b) Administrator
+a) The Client.<br />
+b) Administrator.
