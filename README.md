@@ -13,25 +13,25 @@ Display shipment status (pending, in transit, delivered, etc.), payment status, 
 
 Enable intuitive visualization through interactive charts and tables.
 
-##### Improve logistics management and decision-making
+<strong>2.Improve logistics management and decision-making</strong>
 
 Provide monthly statistics (total shipments, total CRBT) to analyze performance.
 
 Filter data (by customer, date, status, etc.) for targeted tracking.
 
-##### Reduce manual tasks and errors
+<strong>3.Reduce manual tasks and errors</strong>
 
 Automate reports and package tracking to avoid repetitive data entry.
 
 Ensure compliance with Poste Maroc's internal processes.
 
-##### Enhance customer and internal experience
+<strong>4.Enhance customer and internal experience</strong>
 
 Offer customers full transparency on their shipment status.
 
 Allow managers to quickly identify delays or anomalies.
 
-##### Ensure data traceability and archiving
+<strong>5.Enhance customer and internal experience</strong>
 
 Maintain a history of all operations for auditing or future tracking.
 
